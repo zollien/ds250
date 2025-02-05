@@ -53,7 +53,7 @@ names #shows cvs datasource x393384 rows x 54 columns
 
 __How does your name at your birth year compare to its use historically?__
 
-_Historically Zoe had limited use in the early 1900s as it was rarely used between 1910 and 1978, which is my birth year. The trend for the name Zoe did not begin until the late 1980s with a sharp and steady increase. Use of teh name Zoe from 1990 onward shows an increase that demonstrates teh name has increased in popularity a thousand fold._
+_Historically Zoe had limited use in the early 1900s as it was rarely used between 1910 and 1978, which is my birth year. The trend for the name Zoe did not begin until the late 1980s with a sharp and steady increase. Use of the name Zoe from 1990 onward shows an increase that demonstrates the name has increased in popularity a thousand fold._
 
 
 ```{python}
@@ -86,7 +86,7 @@ df_Zoe = df[df["name"] == "Zoe"] #checks for Zoe in data set (104 rows)
 
 __If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_If you spoke to Brittany on the telephone, the age that I would guess for them is 35 years old; she or he  would not be 55 or 15 as the data identifies._
+_If I spoke to Brittany on the telephone, the age that I would guess for them is 35 years old; she or he  would not be 55 or 15 as the data identifies._
 
 ```{python}
 # Include and execute your code here
