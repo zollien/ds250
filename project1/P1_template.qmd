@@ -169,7 +169,7 @@ df_Rocky = df[df["name"] == "Rocky"] #checks for Rocky in data set (? rows)
 
 __Reproduce the chart Elliot using the data from the `names_year.csv` file.__ 
 
-_This chart is a representation of the chart provided. The axes have not been scaled to match, background colour needs changing and reference annotations need to be repositioned._
+_This chart is a representation of the chart provided. The axes have not been scaled to match, background color needs changing and reference annotations need to be repositioned._
 
 ```{python}
 
