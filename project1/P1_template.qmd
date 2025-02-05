@@ -53,7 +53,7 @@ names #shows cvs datasource x393384 rows x 54 columns
 
 __How does your name at your birth year compare to its use historically?__
 
-_Historically Zoe had limited use in teh the early 1900s..._
+_Historically Zoe had limited use in the early 1900s as it was rarely used between 1910 and 1978, which is my birth year. The trend for the name Zoe did not begin until the late 1980s with a sharp and steady increase. Use of teh name Zoe from 1990 onward shows an increase that demonstrates teh name has increased in popularity a thousand fold._
 
 
 ```{python}
@@ -86,7 +86,7 @@ df_Zoe = df[df["name"] == "Zoe"] #checks for Zoe in data set (104 rows)
 
 __If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
 
-_Brittany...age 35, she would not be 55 or 15 ()_
+_If you spoke to Brittany on the telephone, the age that I would guess for them is 35 years old; she or he  would not be 55 or 15 as the data identifies._
 
 ```{python}
 # Include and execute your code here
@@ -116,7 +116,7 @@ df_Brittany = df[df["name"] == "Brittany"] #checks for Brittany in data set (104
 
 __Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice?__
 
-_type your results and analysis here_
+_Use of the name Mary was significantly higher than the combine use of Martha, Paul and Peter until the mid 1950’s when all four names began to decline in popularity. As Mary was the most popular, this name decreased at a greater rate than the others until the mid 1970s. From then all four name have had a steady decline as other more creative and international names were introduced instead of standard Christian or biblical names._
 
 ```{python}
 # Include and execute your code here
@@ -133,8 +133,6 @@ df_Christian_names = df[df["name"].isin(["Mary", "Martha", "Peter", "Paul"])]
   )
   + scale_x_continuous(format = "d")
 
-
-
 )
 ```
 
@@ -143,7 +141,7 @@ df_Christian_names = df[df["name"].isin(["Mary", "Martha", "Peter", "Paul"])]
 
 __Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__  
 
-_198?? Rocky movie made teh name famous..._
+_The movie Rocky had no real impact on the use of the name Rocky. The film was released in 1976 at which point the name was already in a steady rapid increase. As the name began a second steady decline withing four years of the movie, we can see that there was no lasting impact from the movie on the choice of the name Rocky._
 
 ```{python}
 # Include and execute your code here
@@ -171,7 +169,7 @@ df_Rocky = df[df["name"] == "Rocky"] #checks for Rocky in data set (? rows)
 
 __Reproduce the chart Elliot using the data from the `names_year.csv` file.__ 
 
-_type your results and analysis here_
+_This chart is a representation of the chart provided. The axes have not been scaled to match, background colour needs changing and reference annotations need to be repositioned._
 
 ```{python}
 
@@ -183,7 +181,7 @@ df_Elliot = df[df["name"] == "Elliot"] #checks for Elliot in data set
   + geom_line(color = "blue") #assigns a color blue to line
   + labs(
     title="Elliot... What?",
-    subtitle="Total Elliot names recorded by year",
+    subtitle="",
     x="Year",
     y="Total",
   )
@@ -197,6 +195,8 @@ df_Elliot = df[df["name"] == "Elliot"] #checks for Elliot in data set
 
   + geom_vline(xintercept=2003, color="red", linetype="dashed")
   + geom_text(x=2003, y=max(df_Elliot["Total"]), label="Third Release", size=5)
+
+
 )
 
 

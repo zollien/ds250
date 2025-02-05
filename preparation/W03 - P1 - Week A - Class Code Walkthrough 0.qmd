@@ -1,0 +1,88 @@
+## W03.1 - P1 (Week A) - Class Code
+
+
+Note: the video was recorded when using Plotly Express, the code below uses Lets-Plot. The other content is still relavent and what instruction given on chart best practices still apply.
+
+### Below is the code from the video so you can follow along.
+
+```{python}
+#import the usual libraries
+import pandas as pd
+import numpy as np 
+import plotly_express as px
+
+from lets_plot import *
+
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+```{python}
+#what is a dataframe
+df = pd.DataFrame(
+{"a" : [4 ,5, 6],
+"b" : [7, 8, 9],
+"c" : [10, 11, 12]},
+index = [1, 2, 3])
+#print(df)
+df
+```
+
+```{python}
+# %% #alternative df with np.array()
+df = pd.DataFrame(np.array(((
+  [4 ,5, 6],
+  [7, 8, 9],
+  [10, 11, 12]))),
+  index=[1, 2, 3],
+  columns=['a','b','c'])
+df
+```
+
+```{python}
+#how to reference a value
+# df['a']
+# df.a.head()
+# df.loc[1,'a']
+# df.a[1]
+```
+
+```{python}
+#use of head with a aggregation
+means = df.sort_values("c", ascending=False).head(2).c.mean()
+means
+
+```
+
+```{python}
+#use of filter and query
+df
+(df.rename(columns = {'a':'duck'})
+  .filter(['duck', 'b'])
+  .query('b < 9')
+  .duck
+  .min()
+)
+```
+
+```{python}
+#read in a dataset to a df
+#chart it 
+url = "https://github.com/byuidatascience/data4python4ds/raw/master/data-raw/mpg/mpg.csv"
+
+mpg = pd.read_csv(url)
+mpg
+```
+
+```{python}
+(
+  ggplot(data=mpg, mapping=aes(x="displ", y="hwy"))
+  + geom_point()
+  + geom_smooth(method="lm")
+  + labs(
+    title="The relationship between displ and hwy",
+    x="Engine Displacement (L)",
+    y="Highway Fuel Economy (mpg)"
+  
+)
+```

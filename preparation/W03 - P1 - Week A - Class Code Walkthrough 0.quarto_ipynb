@@ -1,0 +1,156 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## W03.1 - P1 (Week A) - Class Code\n",
+        "\n",
+        "\n",
+        "Note: the video was recorded when using Plotly Express, the code below uses Lets-Plot. The other content is still relavent and what instruction given on chart best practices still apply.\n",
+        "\n",
+        "### Below is the code from the video so you can follow along.\n"
+      ],
+      "id": "a6ec6eb6"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#import the usual libraries\n",
+        "import pandas as pd\n",
+        "import numpy as np \n",
+        "import plotly_express as px\n",
+        "\n",
+        "from lets_plot import *\n",
+        "\n",
+        "\n",
+        "LetsPlot.setup_html(isolated_frame=True)"
+      ],
+      "id": "52f1c21d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#what is a dataframe\n",
+        "df = pd.DataFrame(\n",
+        "{\"a\" : [4 ,5, 6],\n",
+        "\"b\" : [7, 8, 9],\n",
+        "\"c\" : [10, 11, 12]},\n",
+        "index = [1, 2, 3])\n",
+        "#print(df)\n",
+        "df"
+      ],
+      "id": "5e192a02",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# %% #alternative df with np.array()\n",
+        "df = pd.DataFrame(np.array(((\n",
+        "  [4 ,5, 6],\n",
+        "  [7, 8, 9],\n",
+        "  [10, 11, 12]))),\n",
+        "  index=[1, 2, 3],\n",
+        "  columns=['a','b','c'])\n",
+        "df"
+      ],
+      "id": "bb242bf4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#how to reference a value\n",
+        "# df['a']\n",
+        "# df.a.head()\n",
+        "# df.loc[1,'a']\n",
+        "# df.a[1]"
+      ],
+      "id": "19e5e350",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#use of head with a aggregation\n",
+        "means = df.sort_values(\"c\", ascending=False).head(2).c.mean()\n",
+        "means"
+      ],
+      "id": "56535dda",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#use of filter and query\n",
+        "df\n",
+        "(df.rename(columns = {'a':'duck'})\n",
+        "  .filter(['duck', 'b'])\n",
+        "  .query('b < 9')\n",
+        "  .duck\n",
+        "  .min()\n",
+        ")"
+      ],
+      "id": "7cfc77fa",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#read in a dataset to a df\n",
+        "#chart it \n",
+        "url = \"https://github.com/byuidatascience/data4python4ds/raw/master/data-raw/mpg/mpg.csv\"\n",
+        "\n",
+        "mpg = pd.read_csv(url)\n",
+        "mpg"
+      ],
+      "id": "d59647c3",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "(\n",
+        "  ggplot(data=mpg, mapping=aes(x=\"displ\", y=\"hwy\"))\n",
+        "  + geom_point()\n",
+        "  + geom_smooth(method=\"lm\")\n",
+        "  + labs(\n",
+        "    title=\"The relationship between displ and hwy\",\n",
+        "    x=\"Engine Displacement (L)\",\n",
+        "    y=\"Highway Fuel Economy (mpg)\"\n",
+        "  \n",
+        ")"
+      ],
+      "id": "39e1c5d4",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Users/zdove/Library/Python/3.12/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
