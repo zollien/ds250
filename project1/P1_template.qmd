@@ -1,0 +1,207 @@
+---
+title: "Client Report - What's in a Name?"
+subtitle: "Course DS 250"
+author: "ZOLLIEN DOVE"
+format:
+  html:
+    self-contained: true
+    page-layout: full
+    title-block-banner: true
+    toc: true
+    toc-depth: 3
+    toc-location: body
+    number-sections: false
+    html-math-method: katex
+    code-fold: true
+    code-summary: "Show the code"
+    code-overflow: wrap
+    code-copy: hover
+    code-tools:
+        source: false
+        toggle: true
+        caption: See code
+execute: 
+  warning: false
+    
+---
+
+```{python}
+import pandas as pd
+import numpy as np
+from lets_plot import *
+
+LetsPlot.setup_html(isolated_frame=True)
+```
+
+
+## Project Notes
+
+__For Project 1 the answer to each question should include a chart **and** a written response. The years labels on your charts should not include a comma. At least **two** of your charts must include reference marks.__  
+
+```{python}
+# Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html
+
+# Include and execute your code here
+df = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv") #connects to data source (, index_col=0) added.
+
+
+names = pd.read_csv("https://github.com/byuidatascience/data4names/raw/master/data-raw/names_year/names_year.csv") 
+names #shows cvs datasource x393384 rows x 54 columns
+```
+
+## QUESTION|TASK 1
+
+__How does your name at your birth year compare to its use historically?__
+
+_Historically Zoe had limited use in teh the early 1900s..._
+
+
+```{python}
+# Include and execute your code here
+
+df_Zoe = df[df["name"] == "Zoe"] #checks for Zoe in data set (104 rows)
+(
+  ggplot(data=df_Zoe, mapping=aes(x="year", y="Total")) 
+  + geom_line() 
+  + labs(
+    title="Zoe name distribution from 1910 to 2015",
+    subtitle="Total Zoe names recorded by year",
+    x="Year",
+    y="Total",
+  )
+  + scale_x_continuous(format = "d")
+  + geom_vline(xintercept=1978, color="green", linetype="solid")
+  + geom_text(x=1978, y=max(df_Zoe["Total"]), label="Birth Year")
+)
+
+ 
+
+
+
+```
+
+
+
+## QUESTION|TASK 2
+
+__If you talked to someone named Brittany on the phone, what is your guess of his or her age? What ages would you not guess?__
+
+_Brittany...age 35, she would not be 55 or 15 ()_
+
+```{python}
+# Include and execute your code here
+
+df_Brittany = df[df["name"] == "Brittany"] #checks for Brittany in data set (104 rows)
+(
+  ggplot(data=df_Brittany, mapping=aes(x="year", y="Total")) 
+  + geom_line() 
+  + labs(
+    title="Brittany name distribution from 1910 to 2015",
+    subtitle="Total Brittany names recorded by year",
+    x="Year",
+    y="Total",
+  )
+  + scale_x_continuous(format = "d")
+  + geom_vline(xintercept=1990, color="green", linetype="solid")
+  + geom_text(x=1990, y=max(df_Brittany["Total"]), label="Expected Age of Brittany...", size=5)
+  + geom_vline(xintercept=1970, color="green", linetype="solid")
+  + geom_text(x=1970, y=max(df_Brittany["Total"]), label="Not Expected Age of Brittany...", size=5)
+  + geom_vline(xintercept=2010, color="green", linetype="solid")
+  + geom_text(x=2010, y=max(df_Brittany["Total"]), label="Not Expected Age of Brittany...", size=5)
+)
+```
+
+
+## QUESTION|TASK 3
+
+__Mary, Martha, Peter, and Paul are all Christian names. From 1920 - 2000, compare the name usage of each of the four names in a single chart. What trends do you notice?__
+
+_type your results and analysis here_
+
+```{python}
+# Include and execute your code here
+
+df_Christian_names = df[df["name"].isin(["Mary", "Martha", "Peter", "Paul"])]
+(
+  ggplot(data=df_Christian_names, mapping=aes(x="year", y="Total", color="name")) 
+  + geom_line() 
+  + labs(
+    title="Mary, Martha, Peter and Paul name distribution from 1920 to 2000",
+    subtitle="Total names recorded by year",
+    x="Year",
+    y="Total",
+  )
+  + scale_x_continuous(format = "d")
+
+
+
+)
+```
+
+
+## QUESTION|TASK 4
+
+__Think of a unique name from a famous movie. Plot the usage of that name and see how changes line up with the movie release. Does it look like the movie had an effect on usage?__  
+
+_198?? Rocky movie made teh name famous..._
+
+```{python}
+# Include and execute your code here
+df_Rocky = df[df["name"] == "Rocky"] #checks for Rocky in data set (? rows)
+(
+  ggplot(data=df_Rocky, mapping=aes(x="year", y="Total")) 
+  + geom_line() 
+  + labs(
+    title="Rocky name distribution from 1976",
+    subtitle="Total Rocky names recorded by year",
+    x="Year",
+    y="Total",
+  )
+  + scale_x_continuous(format = "d")
+  + geom_vline(xintercept=1976, color="green", linetype="solid")
+  + geom_text(x=1976, y=max(df_Rocky["Total"]), label="Movie Year Release of Rocky...", size=5)
+
+)
+
+```
+
+---
+
+## STRETCH QUESTION|TASK 1
+
+__Reproduce the chart Elliot using the data from the `names_year.csv` file.__ 
+
+_type your results and analysis here_
+
+```{python}
+
+# Include and execute your code here
+
+df_Elliot = df[df["name"] == "Elliot"] #checks for Elliot in data set 
+(
+  ggplot(data=df_Elliot, mapping=aes(x="year", y="Total")) 
+  + geom_line(color = "blue") #assigns a color blue to line
+  + labs(
+    title="Elliot... What?",
+    subtitle="Total Elliot names recorded by year",
+    x="Year",
+    y="Total",
+  )
+  + scale_x_continuous(format = "d")
+
+  + geom_vline(xintercept=1983, color="red", linetype="dashed")
+  + geom_text(x=1983, y=max(df_Elliot["Total"]), label="E.T Released", size=5)
+
+  + geom_vline(xintercept=1985, color="red", linetype="dashed")
+  + geom_text(x=1985, y=max(df_Elliot["Total"]), label="Second Release", size=5)
+
+  + geom_vline(xintercept=2003, color="red", linetype="dashed")
+  + geom_text(x=2003, y=max(df_Elliot["Total"]), label="Third Release", size=5)
+)
+
+
+```
+
+
+---
+ 
